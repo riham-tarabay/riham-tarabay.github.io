@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Riham Tarabay | AI & Data Solutions</title>
+<meta name="description" content="Riham Tarabay builds RAG systems, multi-agent workflows, and analytics dashboards. AI development, data & BI analytics, and bilingual AI training — Beirut, working remotely worldwide.">
+<meta property="og:title" content="Riham Tarabay | AI & Data Solutions">
+<meta property="og:description" content="AI & Data Solutions that ship — RAG systems, multi-agent workflows, and analytics dashboards that turn data into decisions.">
+<meta property="og:type" content="website">
+<style>
+  :root{
+    --bg:#F8FAFC; --surface:#FFFFFF; --surface2:#EEF2F7; --text:#0F1B2D; --text2:#64748B;
+    --border:#E2E8F0; --accent:#0D9488; --accent-soft:#CCFBF1; --amber:#F59E0B;
+    --navy:#0F1B2D; --shadow:0 1px 2px rgba(15,27,45,.05),0 4px 12px rgba(15,27,45,.04);
+  }
+  [data-theme="dark"]{
+    --bg:#0B1522; --surface:#0F1B2D; --surface2:#16263C; --text:#F1F5F9; --text2:#94A3B8;
+    --border:#24344D; --accent:#2DD4BF; --accent-soft:#134E4A; --shadow:none;
+  }
+  *{box-sizing:border-box} html{scroll-behavior:smooth}
+  body{margin:0;font-family:Inter,-apple-system,"Segoe UI",Arial,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;font-size:16px}
+  .mono{font-family:"JetBrains Mono",Menlo,Consolas,monospace}
+  a{color:var(--accent);text-decoration:none} a:hover{text-decoration:underline}
+  .skip{position:absolute;top:0;left:0;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;background:var(--accent);color:#fff;padding:8px 16px;border-radius:0 0 8px 0;z-index:100}
+  .skip:focus{width:auto;height:auto;clip:auto}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 24px}
+  /* NAV */
+  nav{position:sticky;top:0;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--border);z-index:50}
+  .nav-in{display:flex;align-items:center;gap:20px;padding:14px 0}
+  .logo{font-weight:800;font-size:17px;letter-spacing:-.02em;color:var(--text);display:flex;align-items:center;gap:8px}
+  .logo-dot{width:10px;height:10px;border-radius:3px;background:var(--accent);display:inline-block}
+  .nav-links{display:flex;gap:18px;margin-inline-start:auto;flex-wrap:wrap}
+  .nav-links a{color:var(--text2);font-size:14px;font-weight:600}
+  .nav-links a:hover{color:var(--text);text-decoration:none}
+  .ctrl{display:flex;gap:8px}
+  .chip-btn{border:1px solid var(--border);background:var(--surface);color:var(--text);border-radius:8px;padding:7px 12px;font:600 13px Inter,sans-serif;cursor:pointer;min-height:36px}
+  .chip-btn:hover{border-color:var(--accent)}
+  .chip-btn:focus-visible,a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+  /* HERO */
+  header.hero{padding:88px 0 72px;position:relative;overflow:hidden}
+  .hero-grid{display:grid;grid-template-columns:1.2fr .8fr;gap:48px;align-items:center}
+  .kicker{color:var(--accent);font-weight:700;font-size:13px;letter-spacing:.14em;text-transform:uppercase;margin:0 0 14px}
+  h1{font-size:52px;line-height:1.08;letter-spacing:-.03em;margin:0 0 18px;font-weight:800}
+  .sub{font-size:19px;color:var(--text2);margin:0 0 28px;max-width:34em}
+  .cta-row{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:26px}
+  .btn{display:inline-block;border-radius:10px;padding:13px 22px;font-weight:700;font-size:15px;cursor:pointer;border:1px solid transparent;min-height:44px}
+  .btn-primary{background:var(--accent);color:#06281f}
+  [data-theme="dark"] .btn-primary{color:#04211c}
+  .btn-primary:hover{filter:brightness(1.06);text-decoration:none}
+  .btn-ghost{border-color:var(--border);color:var(--text);background:var(--surface)}
+  .btn-ghost:hover{border-color:var(--accent);text-decoration:none}
+  .trust{font-size:13.5px;color:var(--text2)}
+  .trust b{color:var(--text)}
+  .hero-art{display:flex;justify-content:center}
+  /* SECTIONS */
+  section{padding:64px 0;border-top:1px solid var(--border)}
+  h2{font-size:30px;letter-spacing:-.02em;margin:0 0 8px}
+  .lead{color:var(--text2);margin:0 0 32px;max-width:44em}
+  .grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+  .card{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:24px;box-shadow:var(--shadow)}
+  .card h3{margin:14px 0 8px;font-size:18px}
+  .card p{margin:0 0 12px;color:var(--text2);font-size:14.5px}
+  .icon{width:40px;height:40px;border-radius:10px;background:var(--accent-soft);display:flex;align-items:center;justify-content:center;color:var(--accent)}
+  .scope{font-size:12.5px;color:var(--text2);border-top:1px dashed var(--border);padding-top:10px}
+  .scope b{color:var(--text)}
+  /* CASE STUDIES */
+  .cs .card h3{margin-top:0}
+  .cs dt{font-weight:700;font-size:12px;text-transform:uppercase;letter-spacing:.1em;color:var(--accent);margin-top:12px}
+  .cs dd{margin:2px 0 0;font-size:14px;color:var(--text2)}
+  .chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:14px;padding-top:12px;border-top:1px solid var(--border)}
+  .chip{font:600 11.5px "JetBrains Mono",Menlo,monospace;background:var(--surface2);border:1px solid var(--border);color:var(--text);border-radius:999px;padding:4px 10px}
+  /* TESTIMONIALS */
+  .quote{font-size:15px;font-style:italic;color:var(--text);margin:0 0 14px}
+  .who{font-size:13px;color:var(--text2);font-weight:600}
+  .stars{color:var(--amber);letter-spacing:2px;font-size:13px;margin-bottom:10px}
+  /* BOOKING */
+  .book-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:start}
+  form{display:grid;gap:14px}
+  label{font-weight:600;font-size:13.5px;display:block;margin-bottom:5px}
+  input,select,textarea{width:100%;padding:11px 12px;border:1px solid var(--border);border-radius:8px;background:var(--surface);color:var(--text);font:400 15px Inter,sans-serif}
+  textarea{min-height:96px;resize:vertical}
+  .err{color:#E56458;font-size:12.5px;margin-top:4px;display:none}
+  .field.bad .err{display:block}
+  .field.bad input,.field.bad select,.field.bad textarea{border-color:#E56458}
+  .success{display:none;background:var(--accent-soft);border:1px solid var(--accent);border-radius:12px;padding:20px}
+  .success h3{margin:0 0 6px} .success p{margin:0 0 12px;font-size:14px}
+  .note-line{font-size:13px;color:var(--text2);margin-top:14px}
+  /* FOOTER */
+  footer{border-top:1px solid var(--border);padding:40px 0 48px;background:var(--surface)}
+  .foot-grid{display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap}
+  .foot-col h3{font-size:14px;margin:0 0 10px}
+  .foot-col p,.foot-col a{font-size:14px;color:var(--text2);margin:4px 0;display:block}
+  .avail{display:inline-flex;align-items:center;gap:8px;font-size:13px;font-weight:600;color:var(--accent)}
+  .pulse{width:8px;height:8px;border-radius:50%;background:var(--accent)}
+  .copyright{margin-top:28px;font-size:12.5px;color:var(--text2)}
+  @media(max-width:900px){
+    .hero-grid{grid-template-columns:1fr}.hero-art{display:none}
+    .grid3{grid-template-columns:1fr}.book-grid{grid-template-columns:1fr}
+    h1{font-size:38px}.nav-links{display:none}
+  }
+  [dir="rtl"] .stars{letter-spacing:0}
+</style>
+</head>
+<body>
+<a class="skip" href="#main" data-i18n="skip">Skip to content</a>
+<nav aria-label="Main">
+  <div class="wrap nav-in">
+    <span class="logo"><span class="logo-dot" aria-hidden="true"></span>Riham Tarabay</span>
+    <div class="nav-links">
+      <a href="#services" data-i18n="nav_services">Services</a>
+      <a href="#work" data-i18n="nav_work">Case studies</a>
+      <a href="#testimonials" data-i18n="nav_testimonials">Testimonials</a>
+      <a href="#book" data-i18n="nav_book">Book</a>
+      <a href="#contact" data-i18n="nav_contact">Contact</a>
+    </div>
+    <div class="ctrl">
+      <button class="chip-btn" id="langBtn" aria-label="Switch language">العربية</button>
+      <button class="chip-btn" id="themeBtn" aria-label="Toggle dark mode">☾</button>
+    </div>
+  </div>
+</nav>
+
+<main id="main">
+<header class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <p class="kicker" data-i18n="kicker">AI &amp; Data Solutions</p>
+      <h1 data-i18n="h1">AI &amp; Data Solutions that ship.</h1>
+      <p class="sub" data-i18n="sub">I build RAG systems, multi-agent workflows, and analytics dashboards that turn data into decisions.</p>
+      <div class="cta-row">
+        <a class="btn btn-primary" href="#book" data-i18n="cta1">Book a consultation</a>
+        <a class="btn btn-ghost" href="#work" data-i18n="cta2">View case studies</a>
+      </div>
+      <p class="trust" data-i18n="trust"><b>Computer Science, LAU</b> · Minor in Data Analytics · 16+ AI projects shipped</p>
+    </div>
+    <div class="hero-art" aria-hidden="true">
+      <svg width="280" height="280" viewBox="0 0 280 280" fill="none">
+        <rect x="20" y="20" width="240" height="240" rx="20" stroke="var(--border)" stroke-width="2"/>
+        <circle cx="90" cy="95" r="26" fill="var(--accent-soft)" stroke="var(--accent)" stroke-width="2"/>
+        <circle cx="190" cy="85" r="18" stroke="var(--accent)" stroke-width="2"/>
+        <circle cx="150" cy="185" r="34" stroke="var(--accent)" stroke-width="2" fill="none"/>
+        <path d="M108 112 L136 160 M172 96 L162 154 M116 95 L172 88" stroke="var(--accent)" stroke-width="2"/>
+        <circle cx="150" cy="185" r="6" fill="var(--accent)"/>
+        <circle cx="90" cy="95" r="6" fill="var(--accent)"/>
+        <circle cx="190" cy="85" r="5" fill="var(--accent)"/>
+      </svg>
+    </div>
+  </div>
+</header>
+
+<section id="services">
+  <div class="wrap">
+    <h2 data-i18n="sv_h">Services</h2>
+    <p class="lead" data-i18n="sv_lead">Three ways I help teams turn AI and data into working products — delivered in English or Arabic.</p>
+    <div class="grid3">
+      <div class="card">
+        <div class="icon" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v4M12 18v4M2 12h4M18 12h4M5 5l3 3M16 16l3 3M19 5l-3 3M8 16l-3 3"/><circle cx="12" cy="12" r="3"/></svg></div>
+        <h3 data-i18n="sv1_h">AI Development</h3>
+        <p data-i18n="sv1_p">RAG chatbots grounded in your documents, LLM integrations for existing products, and multi-agent automation for complex workflows.</p>
+        <p class="scope"><span data-i18n="scope">Starting scope:</span> <b data-i18n="sv1_s">a 2-week discovery build with a working prototype</b></p>
+      </div>
+      <div class="card">
+        <div class="icon" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3v18h18"/><rect x="7" y="12" width="3" height="6"/><rect x="12" y="8" width="3" height="10"/><rect x="17" y="5" width="3" height="13"/></svg></div>
+        <h3 data-i18n="sv2_h">Data &amp; BI Analytics</h3>
+        <p data-i18n="sv2_p">Executive dashboards, SQL pipelines, and Tableau / Power BI reporting that give decision-makers numbers they can trust.</p>
+        <p class="scope"><span data-i18n="scope2">Starting scope:</span> <b data-i18n="sv2_s">one dashboard on one data source, delivered in a week</b></p>
+      </div>
+      <div class="card">
+        <div class="icon" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 10L12 5 2 10l10 5 10-5zM6 12v5c0 1.7 2.7 3 6 3s6-1.3 6-3v-5"/></svg></div>
+        <h3 data-i18n="sv3_h">AI &amp; Data Training</h3>
+        <p data-i18n="sv3_p">Hands-on workshops in English or Arabic — from prompt engineering to practical analytics. 50+ learners trained to date.</p>
+        <p class="scope"><span data-i18n="scope3">Starting scope:</span> <b data-i18n="sv3_s">a half-day workshop tailored to your team</b></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="work" class="cs">
+  <div class="wrap">
+    <h2 data-i18n="cs_h">Case studies</h2>
+    <p class="lead" data-i18n="cs_lead">Selected projects from a portfolio of 16+ shipped AI builds.</p>
+    <div class="grid3">
+      <div class="card">
+        <h3 data-i18n="cs1_h">RAG Knowledge Assistant</h3>
+        <dl>
+          <dt data-i18n="problem">Problem</dt><dd data-i18n="cs1_p">Teams lose hours searching internal documents for answers that already exist.</dd>
+          <dt data-i18n="approach">Approach</dt><dd data-i18n="cs1_a">A retrieval-augmented generation pipeline with embeddings and source citations, so every answer links back to the document it came from.</dd>
+          <dt data-i18n="result">Result</dt><dd data-i18n="cs1_r">A working assistant that answers only from trusted sources.</dd>
+        </dl>
+        <div class="chips"><span class="chip" data-i18n="cs1_c1">answers grounded in source docs</span><span class="chip">Python + vector DB</span><span class="chip" data-i18n="cs1_c3">LLM orchestration</span></div>
+      </div>
+      <div class="card">
+        <h3 data-i18n="cs2_h">LangGraph Multi-Agent Workflow</h3>
+        <dl>
+          <dt data-i18n="problem2">Problem</dt><dd data-i18n="cs2_p">Multi-step research tasks need coordination that a single prompt cannot deliver.</dd>
+          <dt data-i18n="approach2">Approach</dt><dd data-i18n="cs2_a">A supervisor + specialist agent architecture with tool use and state management, built on LangGraph.</dd>
+          <dt data-i18n="result2">Result</dt><dd data-i18n="cs2_r">Autonomous task routing with recovery when a step fails.</dd>
+        </dl>
+        <div class="chips"><span class="chip" data-i18n="cs2_c1">autonomous task routing</span><span class="chip">LangGraph</span><span class="chip" data-i18n="cs2_c3">error recovery</span></div>
+      </div>
+      <div class="card">
+        <h3 data-i18n="cs3_h">Computer Vision &amp; NLP Toolkit</h3>
+        <dl>
+          <dt data-i18n="problem3">Problem</dt><dd data-i18n="cs3_p">Unstructured images and text block analytics teams from using most of their data.</dd>
+          <dt data-i18n="approach3">Approach</dt><dd data-i18n="cs3_a">CV and NLP models for classification and extraction, packaged as reusable, deployable notebooks.</dd>
+          <dt data-i18n="result3">Result</dt><dd data-i18n="cs3_r">Unstructured data turned into analytics-ready tables.</dd>
+        </dl>
+        <div class="chips"><span class="chip">TensorFlow/Keras</span><span class="chip" data-i18n="cs3_c2">OCR + text pipelines</span><span class="chip" data-i18n="cs3_c3">deployable notebooks</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="testimonials">
+  <div class="wrap">
+    <h2 data-i18n="ts_h">What collaborators say</h2>
+    <p class="lead" data-i18n="ts_lead">From teams and learners I've worked with.</p>
+    <div class="grid3">
+      <div class="card"><div class="stars" aria-label="5 out of 5">★★★★★</div><p class="quote" data-i18n="ts1_q">“Riham took a vague reporting problem and came back with a dashboard our managers actually use every week. Clear communication from day one.”</p><p class="who" data-i18n="ts1_w">QA Lead, medical devices company</p></div>
+      <div class="card"><div class="stars" aria-label="5 out of 5">★★★★★</div><p class="quote" data-i18n="ts2_q">“The RAG prototype was scoped honestly and delivered on time. What impressed me most was the documentation — we could extend it without her.”</p><p class="who" data-i18n="ts2_w">Founder, e-commerce startup</p></div>
+      <div class="card"><div class="stars" aria-label="5 out of 5">★★★★★</div><p class="quote" data-i18n="ts3_q">“I joined knowing nothing about data analysis. Riham explained everything in Arabic and English until it clicked. Best training I've taken.”</p><p class="who" data-i18n="ts3_w">Participant, data analytics training cohort</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="book">
+  <div class="wrap book-grid">
+    <div>
+      <h2 data-i18n="bk_h">Book a free 20-minute consultation</h2>
+      <p class="lead" data-i18n="bk_lead">Tell me what you're trying to build or measure. You'll get honest advice on scope, tools, and cost — whether or not we work together.</p>
+      <p class="avail"><span class="pulse" aria-hidden="true"></span><span data-i18n="bk_avail">Currently accepting new projects</span></p>
+    </div>
+    <div>
+      <form id="bookForm" novalidate>
+        <div class="field"><label for="f-name" data-i18n="f_name">Full name</label><input id="f-name" name="name" autocomplete="name" required><p class="err" data-i18n="e_name">Please enter your name.</p></div>
+        <div class="field"><label for="f-email" data-i18n="f_email">Email</label><input id="f-email" name="email" type="email" autocomplete="email" required><p class="err" data-i18n="e_email">Please enter a valid email address.</p></div>
+        <div class="field"><label for="f-topic" data-i18n="f_topic">Topic</label>
+          <select id="f-topic" name="topic">
+            <option value="AI development" data-i18n="t1">AI development</option>
+            <option value="Data & BI" data-i18n="t2">Data &amp; BI analytics</option>
+            <option value="Training" data-i18n="t3">Training</option>
+            <option value="Other" data-i18n="t4">Other</option>
+          </select>
+        </div>
+        <div class="field"><label for="f-date" data-i18n="f_date">Preferred date</label><input id="f-date" name="date" type="date"></div>
+        <div class="field"><label for="f-msg" data-i18n="f_msg">Message</label><textarea id="f-msg" name="message" required></textarea><p class="err" data-i18n="e_msg">Please describe briefly what you need.</p></div>
+        <button class="btn btn-primary" type="submit" data-i18n="f_send">Request consultation</button>
+      </form>
+      <div class="success" id="successBox" role="status">
+        <h3 data-i18n="s_h">Request received ✓</h3>
+        <p data-i18n="s_p">Your request is saved. Click below to open a pre-filled email draft — sending it confirms your booking and I'll reply within 24 hours.</p>
+        <a class="btn btn-primary" id="mailtoBtn" href="#" data-i18n="s_btn">Open email draft</a>
+      </div>
+      <p class="note-line" data-i18n="bk_note">Prefer email? Write to rihamtarabay.rt@gmail.com directly.</p>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer id="contact">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-col">
+        <h3>Riham Tarabay</h3>
+        <p data-i18n="ft_tag">AI &amp; Data Solutions — built to ship.</p>
+        <p data-i18n="ft_loc">Beirut, Lebanon · working remotely worldwide</p>
+      </div>
+      <div class="foot-col">
+        <h3 data-i18n="ft_contact">Contact</h3>
+        <a href="mailto:rihamtarabay.rt@gmail.com">rihamtarabay.rt@gmail.com</a>
+        <a href="https://github.com/riham-tarabay" rel="me">GitHub</a>
+        <a href="https://www.linkedin.com/in/YOUR-LINKEDIN" rel="me">LinkedIn</a>
+      </div>
+      <div class="foot-col">
+        <h3 data-i18n="ft_avail_h">Availability</h3>
+        <p class="avail"><span class="pulse" aria-hidden="true"></span><span data-i18n="ft_avail">Open to junior AI/ML and data roles &amp; freelance projects</span></p>
+      </div>
+    </div>
+    <p class="copyright">© <span id="yr">2026</span> Riham Tarabay · <span data-i18n="ft_built">Designed and built by Riham Tarabay.</span></p>
+  </div>
+</footer>
+
+<script>
+const AR={
+ skip:"تخطَّ إلى المحتوى",
+ nav_services:"الخدمات",nav_work:"دراسات الحالة",nav_testimonials:"آراء العملاء",nav_book:"احجز",nav_contact:"تواصل",
+ kicker:"حلول الذكاء الاصطناعي والبيانات",
+ h1:"حلول ذكاء اصطناعي وبيانات جاهزة للإطلاق.",
+ sub:"أبني أنظمة RAG وسير عمل متعدد الوكلاء ولوحات تحليلات تحوّل البيانات إلى قرارات.",
+ cta1:"احجز استشارة",cta2:"اطّلع على دراسات الحالة",
+ trust:"علوم الحاسوب، الجامعة اللبنانية الأميركية · تخصص فرعي في تحليل البيانات · أكثر من 16 مشروع ذكاء اصطناعي مُنجز",
+ sv_h:"الخدمات",sv_lead:"ثلاث طرق أساعد بها الفرق على تحويل الذكاء الاصطناعي والبيانات إلى منتجات فعلية — باللغة الإنجليزية أو العربية.",
+ sv1_h:"تطوير الذكاء الاصطناعي",sv1_p:"روبوتات محادثة RAG مستندة إلى وثائقكم، ودمج نماذج اللغة في منتجاتكم الحالية، وأتمتة متعددة الوكلاء للمهام المعقدة.",
+ scope:"نطاق البداية:",sv1_s:"بناء استكشافي خلال أسبوعين مع نموذج أولي عامل",
+ sv2_h:"البيانات وتحليلات الأعمال",sv2_p:"لوحات معلومات تنفيذية، وخطوط معالجة SQL، وتقارير Tableau و Power BI تمنح صنّاع القرار أرقاماً موثوقة.",
+ scope2:"نطاق البداية:",sv2_s:"لوحة واحدة على مصدر بيانات واحد خلال أسبوع",
+ sv3_h:"التدريب على الذكاء الاصطناعي والبيانات",sv3_p:"ورش تطبيقية بالإنجليزية أو العربية — من هندسة الأوامر إلى التحليلات العملية. درّبت أكثر من 50 متعلماً حتى الآن.",
+ scope3:"نطاق البداية:",sv3_s:"ورشة نصف يوم مصممة لفريقكم",
+ cs_h:"دراسات الحالة",cs_lead:"مشاريع مختارة من محفظة تضم أكثر من 16 مشروع ذكاء اصطناعي مُنجزاً.",
+ problem:"المشكلة",approach:"المنهجية",result:"النتيجة",problem2:"المشكلة",approach2:"المنهجية",result2:"النتيجة",problem3:"المشكلة",approach3:"المنهجية",result3:"النتيجة",
+ cs1_h:"مساعد المعرفة RAG",cs1_p:"تهدر الفرق ساعات في البحث داخل المستندات عن إجابات موجودة أصلاً.",cs1_a:"خط معالجة توليد معزز بالاسترجاع مع تضمينات واستشهادات بالمصادر، بحيث يرتبط كل جواب بمصدره.",cs1_r:"مساعد عامل يجيب فقط من مصادر موثوقة.",
+ cs1_c1:"إجابات مستندة إلى المصادر",cs1_c3:"تنسيق نماذج اللغة",
+ cs2_h:"سير عمل متعدد الوكلاء بـ LangGraph",cs2_p:"تحتاج مهام البحث متعددة الخطوات تنسيقاً لا يوفره أمر واحد.",cs2_a:"بنية مشرف + وكلاء متخصصين مع استخدام الأدوات وإدارة الحالة، مبنية على LangGraph.",cs2_r:"توجيه ذاتي للمهام مع التعافي عند فشل أي خطوة.",
+ cs2_c1:"توجيه ذاتي للمهام",cs2_c3:"تعافٍ من الأخطاء",
+ cs3_h:"أدوات الرؤية الحاسوبية ومعالجة اللغة",cs3_p:"الصور والنصوص غير المهيكلة تمنع فرق التحليل من استخدام معظم بياناتها.",cs3_a:"نماذج رؤية حاسوبية ومعالجة لغة للتصنيف والاستخراج، مُغلفة كدفاتر قابلة للنشر وإعادة الاستخدام.",cs3_r:"تحويل البيانات غير المهيكلة إلى جداول جاهزة للتحليل.",
+ cs3_c2:"OCR وخطوط معالجة نصوص",cs3_c3:"دفاتر قابلة للنشر",
+ ts_h:"آراء المتعاونين",ts_lead:"من فرق ومتعلمين عملت معهم.",
+ ts1_q:"“أخذت ريهام مشكلة تقارير غامضة وعادت بلوحة معلومات يستخدمها مدراؤنا فعلياً كل أسبوع. تواصل واضح منذ اليوم الأول.”",ts1_w:"مسؤول ضمان الجودة، شركة أجهزة طبية",
+ ts2_q:"“نموذج RAG الأولي كان محدد النطاق بصدق وسُلّم في موعده. أكثر ما أعجبني التوثيق — استطعنا توسيعه بدونها.”",ts2_w:"مؤسس، شركة تجارة إلكترونية ناشئة",
+ ts3_q:"“انضممت دون أي معرفة بتحليل البيانات. شرحت ريهام كل شيء بالعربية والإنجليزية حتى وضحت الصورة. أفضل تدريب تلقيته.”",ts3_w:"مشاركة في دورة تحليل البيانات",
+ bk_h:"احجز استشارة مجانية لمدة 20 دقيقة",bk_lead:"أخبرني ماذا تحاول أن تبني أو تقيس. ستحصل على نصيحة صادقة حول النطاق والأدوات والتكلفة.",
+ bk_avail:"أستقبل مشاريع جديدة حالياً",
+ f_name:"الاسم الكامل",f_email:"البريد الإلكتروني",f_topic:"الموضوع",f_date:"التاريخ المفضل",f_msg:"الرسالة",f_send:"اطلب الاستشارة",
+ t1:"تطوير ذكاء اصطناعي",t2:"بيانات وتحليلات",t3:"تدريب",t4:"أخرى",
+ e_name:"يرجى إدخال الاسم.",e_email:"يرجى إدخال بريد إلكتروني صحيح.",e_msg:"يرجى وصف ما تحتاجه بإيجاز.",
+ s_h:"تم استلام الطلب ✓",s_p:"تم حفظ طلبك. اضغط أدناه لفتح مسودة بريد جاهزة — إرسالها يؤكد حجزك وسأرد خلال 24 ساعة.",s_btn:"افتح مسودة البريد",
+ bk_note:"تفضل البريد مباشرة؟ راسلني على rihamtarabay.rt@gmail.com",
+ ft_tag:"حلول ذكاء اصطناعي وبيانات — مصممة للإطلاق.",ft_loc:"بيروت، لبنان · أعمل عن بُعد حول العالم",
+ ft_contact:"تواصل",ft_avail_h:"التوفر",ft_avail:"متاحة لوظائف مبتدئة في الذكاء الاصطناعي والبيانات ومشاريع مستقلة",
+ ft_built:"تصميم وتطوير ريهام طربيه."
+};
+const EN={}; document.querySelectorAll('[data-i18n]').forEach(el=>{EN[el.getAttribute('data-i18n')]=el.innerHTML;});
+const params=new URLSearchParams(location.search);
+let lang=params.get('lang')||localStorage.getItem('rt-lang')||'en';
+let theme=params.get('theme')||localStorage.getItem('rt-theme')||(matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');
+function applyTheme(){document.documentElement.setAttribute('data-theme',theme);document.getElementById('themeBtn').textContent=theme==='dark'?'☀':'☾';}
+function applyLang(){
+  const dict=lang==='ar'?AR:EN;
+  document.querySelectorAll('[data-i18n]').forEach(el=>{const k=el.getAttribute('data-i18n');if(dict[k])el.innerHTML=dict[k];});
+  document.documentElement.lang=lang; document.documentElement.dir=lang==='ar'?'rtl':'ltr';
+  document.getElementById('langBtn').textContent=lang==='ar'?'English':'العربية';
+}
+document.getElementById('themeBtn').addEventListener('click',()=>{theme=theme==='dark'?'light':'dark';localStorage.setItem('rt-theme',theme);applyTheme();});
+document.getElementById('langBtn').addEventListener('click',()=>{lang=lang==='ar'?'en':'ar';localStorage.setItem('rt-lang',lang);applyLang();});
+applyTheme();applyLang();
+document.getElementById('yr').textContent=new Date().getFullYear();
+// Booking form
+const form=document.getElementById('bookForm');
+form.addEventListener('submit',e=>{
+  e.preventDefault();let ok=true;
+  const name=document.getElementById('f-name'),email=document.getElementById('f-email'),msg=document.getElementById('f-msg');
+  [[name,v=>v.trim().length>1],[email,v=>/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(v)],[msg,v=>v.trim().length>4]].forEach(([el,test])=>{
+    const f=el.closest('.field');
+    if(!test(el.value)){f.classList.add('bad');ok=false;}else f.classList.remove('bad');
+  });
+  if(!ok)return;
+  const data={name:name.value.trim(),email:email.value.trim(),topic:document.getElementById('f-topic').value,date:document.getElementById('f-date').value,message:msg.value.trim(),at:new Date().toISOString()};
+  const all=JSON.parse(localStorage.getItem('rt-bookings')||'[]');all.push(data);localStorage.setItem('rt-bookings',JSON.stringify(all));
+  const subject=encodeURIComponent('Consultation request — '+data.topic+' — '+data.name);
+  const body=encodeURIComponent('Name: '+data.name+'\nEmail: '+data.email+'\nTopic: '+data.topic+'\nPreferred date: '+(data.date||'flexible')+'\n\n'+data.message);
+  document.getElementById('mailtoBtn').href='mailto:rihamtarabay.rt@gmail.com?subject='+subject+'&body='+body;
+  form.style.display='none';document.getElementById('successBox').style.display='block';
+});
+</script>
+</body>
+</html>
